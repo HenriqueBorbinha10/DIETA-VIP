@@ -1,91 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plano Personalizado</title>
-  <style>
-    body {
-      background-color: #3b2f24;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .container {
-      background: white;
-      border-radius: 12px;
-      padding: 30px 40px;
-      max-width: 350px;
-      width: 100%;
-      text-align: center;
-    }
-    .container img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    .container input, .container select {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .container button {
-      width: 100%;
-      padding: 12px;
-      background-color: #7ED957;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .radio-group {
-      display: flex;
-      justify-content: space-around;
-      margin: 10px 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <img src="assets/logo_pomme.png" alt="Logo Pomme">
-    <h2>Bem-vindo! Preencha seus dados para gerar seu plano personalizado! 🌟</h2>
-    <form onsubmit="return prosseguir();">
-      <input type="email" placeholder="E-mail" required>
-      <input type="number" placeholder="Idade" required>
-      <input type="number" placeholder="Peso (em kg)" required>
-      
+<script>
+  function prosseguir() {
+    const idade = document.querySelector('input[placeholder="Idade"]').value;
+    const peso = document.querySelector('input[placeholder="Peso (em kg)"]').value;
+    const altura = document.querySelector('input[placeholder="Altura (em cm)"]').value;
 
-      <label>Qual é o seu sexo?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="sexo" required> Masculino</label>
-        <label><input type="radio" name="sexo" required> Feminino</label>
-      </div>
+    localStorage.setItem("idade", idade);
+    localStorage.setItem("peso", peso);
+    localStorage.setItem("altura", altura);
 
-      <label>Qual é o seu nível de obesidade?</label>
-      <select required>
-        <option value="">Nenhuma</option>
-        <option value="leve">Leve</option>
-        <option value="moderada">Moderada</option>
-        <option value="grave">Grave</option>
-      </select>
-
-      <button type="submit">Entrar</button>
-    </form>
-  </div>
-  <script>
-    function prosseguir() {
-      window.location.href = 'resultado.html';
-      return false;
-    }
-  </script>
-</body>
-</html>
+    window.location.href = "resultado.html";
+    return false;
+  }
+</script>
