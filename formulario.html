@@ -1,1 +1,33 @@
-<html><body><h1>Formulário Inicial (dinâmico por idioma)</h1></body></html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etapa 1 – Dados pessoais</title>
+  <link rel="stylesheet" href="styles/appManzana.css">
+</head>
+<body>
+  <header><img id="logoSemFundo" src="assets/images_pt/logo.png" alt="Logo"></header>
+  <main>
+    <h1>Preencha seus dados</h1>
+    <form id="form1">
+      <label>Nome:</label>
+      <input type="text" id="nome" required>
+      <label>Peso (kg):</label>
+      <input type="number" id="peso" step="0.1" required>
+      <label>Altura (cm):</label>
+      <input type="number" id="altura" step="0.1" required>
+      <button type="submit">Continuar</button>
+    </form>
+  </main>
+  <script>
+    document.getElementById('form1').addEventListener('submit', e => {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const peso = document.getElementById('peso').value;
+      const altura = document.getElementById('altura').value;
+      window.location.href = `resultado.html?nome=${encodeURIComponent(nome)}&peso=${peso}&altura=${altura}&lang=${new URLSearchParams(location.search).get('lang')}`;
+    });
+  </script>
+</body>
+</html>
